@@ -29,7 +29,7 @@ if __name__ == "__main__":
             with open(test_file_path) as tf:
                 all_tests = tf.readlines()
 
-            for test in all_tests:
+            for test in tqdm(all_tests):
                 test_method, test_class = test.split('(')
                 test_class = test_class[:-2]
                 test_signature = test_class+"::"+test_method

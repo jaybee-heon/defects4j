@@ -42,18 +42,20 @@ if __name__ == "__main__":
                 run_command(make_fdr_command(pid, vid, test_signature))
 
                 analysis_result = './checkout/' + pid + "_" + vid + "/summary.csv"
-                f = open(analysis_result)
-                csv_file = csv.reader(f)
-                for line in csv_file:
-                    print(f"line: {line}")
+                with open(analysis_result, newline='') as file:
+                    reader = csv.reader(file)
+                    next(reader)
+                    result = next(reader)
+                    mutants_generated = int(result[0])
+                    mutants_covered = int(result[1])
+                    mutants_killed = int(result[2])
+                    mutants_live = int(result[3])
+                    fdr_result[pid + "_" + vid][test_signature] = {"mutants-generated": mutants_generated,
+                                                                   "mutants-covered": mutants_covered,
+                                                                   "mutants-killed": mutants_killed,
+                                                                   "mutants-live": mutants_live,
+                                                                   "mutation-score": mutants_killed/mutants_generated}
 
-                # mutants_generated = root.get('mutants-generated')
-                # mutants_killed = root.get('mutants-killed')
-                # mutation_score = root.get('mutation-score')
-                #
-                # fdr_result[pid + "_" + vid][test_signature] = { "mutants-generated": mutants_generated,
-                #                                                 "mutants-killed": mutants_killed,
-                #                                                 "mutation-score": mutation_score }
-                #
-                # with open(output_file, 'w') as wf:
-                #     json.dump(coverage, wf, indent=4)
+
+                with open(output_file, 'w') as wf:
+                    json.dump(coverage, wf, indent=4)

@@ -40,18 +40,18 @@ if __name__ == "__main__":
                 print(test_signature)
                 run_command(make_fdr_command(pid, vid, test_signature))
 
-                fdr_file = './checkout/' + pid + "_" + vid + "/mutation.xml"
-
-                tree = ET.parse(fdr_file)
-                root = tree.getroot()
-
-                mutants_generated = root.get('mutants-generated')
-                mutants_killed = root.get('mutants-killed')
-                mutation_score = root.get('mutation-score')
-
-                fdr_result[pid + "_" + vid][test_signature] = { "mutants-generated": mutants_generated,
-                                                                "mutants-killed": mutants_killed,
-                                                                "mutation-score": mutation_score }
-
-                with open(output_file, 'w') as wf:
-                    json.dump(coverage, wf, indent=4)
+                # fdr_file = './checkout/' + pid + "_" + vid + "/mutation.xml"
+                #
+                # tree = ET.parse(fdr_file)
+                # root = tree.getroot()
+                #
+                # mutants_generated = root.get('mutants-generated')
+                # mutants_killed = root.get('mutants-killed')
+                # mutation_score = root.get('mutation-score')
+                #
+                # fdr_result[pid + "_" + vid][test_signature] = { "mutants-generated": mutants_generated,
+                #                                                 "mutants-killed": mutants_killed,
+                #                                                 "mutation-score": mutation_score }
+                #
+                # with open(output_file, 'w') as wf:
+                #     json.dump(coverage, wf, indent=4)

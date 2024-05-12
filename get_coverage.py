@@ -9,6 +9,7 @@ def run_command(command):
         result = subprocess.run(command, shell=True, check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print("STDOUT:", result.stdout)
         print("STDERR:", result.stderr)
+        print("")
     except subprocess.CalledProcessError as e:
         print("Error:", e)
         print("STDOUT:", e.stdout)

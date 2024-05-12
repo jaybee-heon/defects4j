@@ -11,6 +11,7 @@ if __name__ == "__main__":
     with open(projects) as pf:
         for line in pf:
             pid, vid = line.split()
+            output_file = f'./{pid}-{vid}_fdr.json'
             fdr_result[pid + "_" + vid] = dict()
 
             print(f"Doing checkout...")
@@ -39,7 +40,7 @@ if __name__ == "__main__":
                 print(test_signature)
                 run_command(make_fdr_command(pid, vid, test_signature))
 
-                fdr_file = './checkout/' + pid + "_" + vid + "/fdr.xml"
+                fdr_file = './checkout/' + pid + "_" + vid + "/mutation.xml"
 
                 tree = ET.parse(fdr_file)
                 root = tree.getroot()
@@ -52,3 +53,5 @@ if __name__ == "__main__":
                                                                 "mutants-killed": mutants_killed,
                                                                 "mutation-score": mutation_score }
 
+                with open(output_file, 'w') as wf:
+                    json.dump(coverage, wf, indent=4)

@@ -6,7 +6,7 @@ def make_fdr_command(pid, vid, test_signature):
     return command
 
 if __name__ == "__main__":
-    projects = 'heon/projects.txt'
+    projects = './projects.txt'
     fdr_result = dict()
     with open(projects) as pf:
         for line in pf:

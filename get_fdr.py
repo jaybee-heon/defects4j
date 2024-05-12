@@ -56,6 +56,5 @@ if __name__ == "__main__":
                                                                    "mutants-live": mutants_live,
                                                                    "mutation-score": mutants_killed/mutants_generated}
 
-
-                with open(output_file, 'w') as wf:
-                    json.dump(coverage, wf, indent=4)
+            with open(output_file, 'w') as wf:
+                json.dump(fdr_result, wf, indent=4)

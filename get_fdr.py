@@ -1,4 +1,5 @@
 from get_coverage import *
+import csv
 
 
 def make_fdr_command(pid, vid, test_signature):
@@ -40,11 +41,12 @@ if __name__ == "__main__":
                 print(test_signature)
                 run_command(make_fdr_command(pid, vid, test_signature))
 
-                # fdr_file = './checkout/' + pid + "_" + vid + "/mutation.xml"
-                #
-                # tree = ET.parse(fdr_file)
-                # root = tree.getroot()
-                #
+                analysis_result = './checkout/' + pid + "_" + vid + "/summary.csv"
+                f = open(analysis_result)
+                csv_file = csv.reader(f)
+                for line in csv_file:
+                    print(f"line: {line}")
+
                 # mutants_generated = root.get('mutants-generated')
                 # mutants_killed = root.get('mutants-killed')
                 # mutation_score = root.get('mutation-score')

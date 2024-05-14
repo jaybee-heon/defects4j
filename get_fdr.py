@@ -1,4 +1,5 @@
 from get_coverage import *
+import argparse
 import csv
 
 
@@ -7,6 +8,10 @@ def make_fdr_command(pid, vid, test_signature):
     return command
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="파일을 지정된 부분 수로 나누는 스크립트")
+    parser.add_argument('part_idx', type=int, help='partition id')
+    args = parser.parse_args()
+
     projects = './projects.txt'
     fdr_result = dict()
     with open(projects) as pf:
@@ -29,7 +34,18 @@ if __name__ == "__main__":
             with open(test_file_path) as tf:
                 all_tests = tf.readlines()
 
-            for test in tqdm(all_tests):
+            num_parts = 4
+            part_idx = args.part_idx
+            print(f"{part_idx + 1}/{num_parts} is running")
+            num_tests = len(all_tests)
+            part_size = num_tests // num_parts
+            remainder = num_tests % num_parts
+
+            start = part_idx * part_size
+            end = start + part_size + (remainder if part_idx + 1 == num_parts else 0)
+            test_partition = all_tests[start:end]
+
+            for test in tqdm(test_partition):
                 test_method, test_class = test.split('(')
                 test_class = test_class[:-2]
                 test_signature = test_class+"::"+test_method

@@ -3,7 +3,7 @@ import csv
 
 
 def make_fdr_command(pid, vid, test_signature):
-    command = "defects4j mutation -w checkout/"+pid+"_"+vid+" -t "+test_signature
+    command = "defects4j mutation -w checkout/"+pid+"_"+vid+" -t "+test_signature + "-i all_classes/" + pid+"_"+vid
     return command
 
 if __name__ == "__main__":

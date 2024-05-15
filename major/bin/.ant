@@ -10,7 +10,7 @@ fi
 
 $CMD \
     -XX:ReservedCodeCacheSize=256M \
-    -XX:MaxPermSize=1G \
+    -XX:MaxMetaspaceSize=1G \
     -Djava.awt.headless=true \
     -Xbootclasspath/a:$BASE/config/config.jar \
     -jar $BASE/lib/ant-launcher.jar $*

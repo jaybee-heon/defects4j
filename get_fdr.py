@@ -4,7 +4,7 @@ import csv
 
 
 def make_fdr_command(pid, vid, test_signature):
-    command = f"defects4j mutation -w checkout/{pid}_{vid} -t {test_signature} -i relevant_classes/{pid}-{vid}/relevant_classes"
+    command = f"defects4j mutation -w checkout/{pid}_{vid} -t {test_signature} -i relevant_classes/{pid}-{vid}/relevant_classes.txt"
     return command
 
 if __name__ == "__main__":

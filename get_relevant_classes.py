@@ -1,7 +1,7 @@
 from get_coverage import *
 
 def make_relevant_classes_command(pid, vid):
-    command = f"defects4j export -p classes.relevant -w checkout/{pid}_{vid} -o ./relevant_classes/{pid}_{vid}/relevant_classes"
+    command = f"defects4j export -p classes.relevant -w checkout/{pid}_{vid} -o ./relevant_classes/{pid}_{vid}/relevant_classes.txt"
     return command
 
 if __name__ == "__main__":
@@ -15,4 +15,6 @@ if __name__ == "__main__":
             run_command(make_checkout_command(pid, vid))
 
             print("Export...")
+            with open(f"./relevant_classes/{pid}_{vid}/relevant_classes.txt", 'w') as wf:
+                print("open")
             run_command(make_relevant_classes_command(pid, vid))

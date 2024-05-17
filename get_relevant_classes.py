@@ -32,6 +32,9 @@ if __name__ == "__main__":
             print(f"{pid}-{vid}")
             run_command(make_checkout_command(pid, vid))
 
+            print("Compiling...")
+            run_command(make_compile_command(pid, vid))
+
             print("Export...")
             create_directory_and_file(f"./relevant-classes/{pid}_{vid}", "relevant_classes.txt")
             run_command(make_relevant_classes_command(pid, vid))

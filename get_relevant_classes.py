@@ -8,6 +8,8 @@ if __name__ == "__main__":
     projects = "./projects.txt"
     with open(projects) as pf:
         for line in pf:
+            pid, vid = line.split()
+            
             print(f"Doing checkout...")
             print(f"{pid}-{vid}")
             run_command(make_checkout_command(pid, vid))

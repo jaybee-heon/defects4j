@@ -10,10 +10,10 @@ if __name__ == "__main__":
             directory_path = f"./relevant_classes/{pid}-{vid}"
             if not os.path.exists(directory_path):
                 os.makedirs(directory_path)
-            tmp_dir = f"/tmp/{pid}-{vid}"
+            tmp_dir = f"/tmp/{pid}-{vid}f"
 
             if not os.path.exists(tmp_dir):
-                os.system(f"defects4j checkout -p {pid} -v {vid} -w {tmp_dir}")
+                os.system(f"defects4j checkout -p {pid} -v {vid}f -w {tmp_dir}")
             os.system(f"cd {tmp_dir} && defects4j export -p classes.relevant -o relevant_classes")
             target_dir = f"/app/defects4j/relevant_classes/{pid}-{vid}"
             os.system(f"mv {tmp_dir}/relevant_classes {target_dir}")

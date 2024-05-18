@@ -19,6 +19,7 @@ if __name__ == "__main__":
 
     pid = args.project
     vid = args.version
+    vid = str(vid)
     output_file = f"./{pid}-{vid}_fdr.json"
     fdr_result[pid + "_" + vid] = dict()
 

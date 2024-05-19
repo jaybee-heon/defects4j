@@ -19,8 +19,15 @@ RUN \
                 unzip \
                 cpanminus \
                 make \
+                wget \
+                python3 \
+                python3-pip \
+                vim \
                 && \
   rm -rf /var/lib/apt/lists/*
+
+RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN pip3 install tqdm
 
 # Java version
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64

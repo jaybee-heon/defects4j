@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
     for test in tqdm(test_partition):
         test_method, test_class = test.split('(')
-        test_class = test_class[:-2]
+        test_class = test_class.split(')')[0]
         test_signature = test_class+"::"+test_method
 
         fdr_result[pid+"_"+vid][test_signature] = dict()

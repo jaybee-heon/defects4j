@@ -1563,4 +1563,3 @@ com.google.debugging.sourcemap.proto.Mapping$LineMapping$Builder
 com.google.debugging.sourcemap.proto.Mapping$LineMappingOrBuilder
 com.google.debugging.sourcemap.proto.Mapping$1
 com.google.debugging.sourcemap.proto.Mapping$OriginalMapping$Builder
-com.google.debugging.sourcemap.proto.Mapping

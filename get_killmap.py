@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
         # os.system(f"cd {tmp_dir} && defects4j mutation -t {test_signature}")
         os.system(
-            f"cd {tmp_dir} && defects4j mutation -t {test_signature} -i {tmp_dir}/../../all_classes/{pid}-{vid}/all_classes")
+            f"cd {tmp_dir} && defects4j mutation -t {test_signature} -i /app/defects4j/all_classes/{pid}-{vid}/all_classes")
         with open(os.path.join(tmp_dir, "kill.csv"), "r") as f:
             rdr = csv.reader(f)
 
